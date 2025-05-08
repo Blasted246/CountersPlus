@@ -8,14 +8,18 @@ namespace CountersPlus.Counters
     {
         private int notesMissed = 0;
         private TMP_Text counter;
+        private TMP_Text label;
 
         public override void CounterInit()
         {
             GenerateBasicText("Misses", out counter);
+            label = counter.transform.parent.GetComponentInChildren<TMP_Text>(true);
+            if (label == counter) label = null;
             
             if (Settings.HideWhenNone && counter != null)
             {
-                counter.transform.parent.gameObject.SetActive(false);
+                counter.enabled = false;
+                if (label != null) label.enabled = false;
             }
         }
 
@@ -40,9 +44,10 @@ namespace CountersPlus.Counters
             notesMissed++;
             counter.text = notesMissed.ToString();
 
-            if (Settings.HideWhenNone && !counter.transform.parent.gameObject.activeSelf)
+            if (Settings.HideWhenNone)
             {
-                counter.transform.parent.gameObject.SetActive(true);
+                if (!counter.enabled) counter.enabled = true;
+                if (label != null && !label.enabled) label.enabled = true;
             }
         }
     }
