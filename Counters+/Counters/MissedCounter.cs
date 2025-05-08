@@ -12,9 +12,11 @@ namespace CountersPlus.Counters
         public override void CounterInit()
         {
             GenerateBasicText("Misses", out counter);
-
-            if (Settings.HideWhenNone)
-                counter.gameObject.SetActive(false);
+            
+            if (Settings.HideWhenNone && counter != null)
+            {
+                counter.transform.parent.gameObject.SetActive(false);
+            }
         }
 
         public void OnNoteCut(NoteData data, NoteCutInfo info)
@@ -38,9 +40,9 @@ namespace CountersPlus.Counters
             notesMissed++;
             counter.text = notesMissed.ToString();
 
-            if (Settings.HideWhenNone && !counter.gameObject.activeSelf)
+            if (Settings.HideWhenNone && !counter.transform.parent.gameObject.activeSelf)
             {
-                counter.gameObject.SetActive(true);
+                counter.transform.parent.gameObject.SetActive(true);
             }
         }
     }
