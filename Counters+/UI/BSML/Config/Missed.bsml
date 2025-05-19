@@ -1,4 +1,5 @@
 ﻿<vertical spacing='1' horizontal-fit='PreferredSize'>
   <checkbox-setting text='Include Bad Cuts' apply-on-change='true' value='CountBadCuts' hover-hint='Bad cuts count towards the Missed counter.'/>
   <checkbox-setting text='Hidden Until First Miss' apply-on-change='true' value='HideWhenNone' hover-hint='Hide the counter until you have one miss'/>
+  <checkbox-setting text='Count Chain Links' apply-on-change='true' value='CountChainNoteMisses' hover-hint='Chain links count towards the Missed counter.'/>
 </vertical>

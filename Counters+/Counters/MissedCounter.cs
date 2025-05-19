@@ -33,7 +33,7 @@ namespace CountersPlus.Counters
 
         public void OnNoteMiss(NoteData data)
         {
-            if (data.colorType != ColorType.None && data.gameplayType != NoteData.GameplayType.BurstSliderElement)
+            if (data.colorType != ColorType.None && (Settings.CountChainNoteMisses || data.gameplayType != NoteData.GameplayType.BurstSliderElement))
             {
                 UpdateMissCount();
             }
